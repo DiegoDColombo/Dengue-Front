@@ -25,6 +25,8 @@ module.exports = function (grunt) {
     dist: 'dist'
   };
 
+  grunt.loadNpmTasks('grunt-ng-constant');
+
   // Define the configuration for all the tasks
   grunt.initConfig({
 
@@ -118,6 +120,21 @@ module.exports = function (grunt) {
       }
     },
 
+    ngconstant: {
+      options: {
+        name: 'config',
+        dest: '<%= yeoman.app %>/scripts/Config.js',
+      },
+      development: {
+          constants: {
+            ENV: 'development',
+            API_URL: 'http://dengueApp'
+          }
+      },
+      build:{
+
+      }
+    },
     // Make sure there are no obvious mistakes
     jshint: {
       options: {
@@ -467,6 +484,7 @@ module.exports = function (grunt) {
 
     grunt.task.run([
       'clean:server',
+      'ngconstant:development',
       'wiredep',
       'concurrent:server',
       'postcss:server',
