@@ -1,0 +1,104 @@
+<svg width="800" height="150">
+  <rect x="15" y="20" rx="10" ry="10" width="700" height="75"
+  style="fill:#ffab00;stroke:grey;stroke-width:0;opacity:1"/>
+  <text fill="#ffffff" font-size="30" font-family="Verdana" x="265" y="70">Criar Denúncia</text>
+</svg>
+<div>
+	<form name="newDenunciaForm" ng-submit="createDenuncia()">
+		<div class="container">
+  			<table style="float: left;" width="360">
+	  			<th><label>Selecione o tipo de Ameaça</label></th>
+		  			<tr>
+		    			<td>
+					  		 <div class="input-group" style="margin-bottom: 10px;">
+							    <span class="input-group-addon"><input type="checkbox" ng-model="denuncia.aedes"></span>
+		      					<box type="text" class="form-control">Aedes Aegypti</box>
+		    				</div>
+		    			<td>
+		  			</tr>
+		  			<tr>
+		    			<td>
+		    				<div class="input-group" style="margin-bottom: 10px;">
+								<span class="input-group-addon"><input type="checkbox" ng-model="denuncia.focus"></span>
+		      					<box type="text" class="form-control">Foco de Reprodução</box>
+		    				</div>
+		    			</td>
+		    		</tr>
+		  		<th><label>Houve fiscalização governamental?</label></th>	
+		  			<tr>
+		    			<td>
+		    				<div class="input-group" style="margin-bottom: 10px;">
+								<span class="input-group-addon"><input type="checkbox" ng-model="denuncia.epidemVigilance"></span>
+		      					<box type="text" class="form-control">Agentes de Saúde da prefeitura</box>
+		    				</div>
+		    			</td>
+		    		</tr>
+		  		<th><label>Houveram casos de diagnosticados?</label></th>	
+		  			<tr>
+		    			<td>
+		    				<div class="input-group" style="margin-bottom: 10px;">
+								<span class="input-group-addon"><input type="checkbox" ng-model="denuncia.diagnCases"></span>
+			      				<box type="text" class="form-control">Dengue, Chikungunya, Zika</box>
+			    			</div>
+		    			</td>
+		  			</tr>
+		  		<th><label>Foto da ameaça</label></th>	
+		  			<tr>
+		  				<td width="90%">
+		    				<div class="input-group" style="margin-bottom: 10px;">
+					  			<span class="input-group-addon"><i class="fa fa-camera-retro fa-fw"></i></span>
+					  			<input class="form-control" id="uploadBtn" type="file" placeholder="Foto">
+							</div>
+							<div class="thumbnail" ng-if="photoIsSet">
+								<img class="img-responsive" alt="" ng-src="{{denuncia.photo}}"
+								style="height: 180px; width: 180px; display: block;" />
+		    				</div>
+		  				</td>
+		 			</tr>
+ 			</table>
+ 			<table width="340">
+		 		<th><label>Local da Ameaça</label></th>
+		 			<tr>
+						<td>
+		    				<div class="input-group" style="margin-bottom: 10px;">
+					  			<span class="input-group-addon"><i class="fa fa-globe fa-fw"></i></span>
+					  			<input class="form-control" type="text" placeholder="CEP" ng-model="location.cep" ng-blur="checkCEP()" required />
+							</div>
+		    			</td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+		    				<div class="input-group" style="margin-bottom: 10px;">
+					  			<span class="input-group-addon"><i class="fa fa-home fa-fw"></i></span>
+					  			<input class="form-control" type="text" placeholder="Endereço" ng-model="location.street" required />
+							</div>
+		    			</td>
+			    	</tr>
+			    	<tr>
+			    		<td>
+		    				<div class="input-group" style="margin-bottom: 10px;">
+					  			<span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+					  			<input class="form-control" type="text" placeholder="Número" ng-model="location.number" required />
+							</div>
+			    		</td>
+			    	</tr>
+			    	<tr>
+			    		<td width="100%">
+		    				<div class="input-group" style="margin-bottom: 10px;">
+					  			<span class="input-group-addon"><i class="fa fa-plus-square-o fa-fw"></i></span>
+					  			<input class="form-control" type="text" placeholder="Complemento" ng-model="location.complement">
+							</div>
+		    			</td>
+			    	</tr>
+			</table>
+ 			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-md-6" align="right">
+					<button type="submit" ng-disabled="newDenunciaForm.$invalid" class="btn btn-lg btn-success" >Criar</button>
+				</div>
+				<div class="col-md-6">
+					<button type="reset" class="btn btn-lg btn-cancel" >Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
