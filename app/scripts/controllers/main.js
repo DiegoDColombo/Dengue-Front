@@ -8,10 +8,11 @@
  * Controller of the dengueFrontApp
  */
 angular.module('dengueFrontApp')
-  .controller('MainCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($scope,$state,$auth) {
+    
+    $scope.logout = function() {
+      $auth.logout();
+      $state.go('login');
+    };
+
   });
