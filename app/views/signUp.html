@@ -1,0 +1,87 @@
+<svg width="800" height="150">
+  <rect x="10" y="20" rx="10" ry="10" width="700" height="75"
+  style="fill:#ffab00;stroke:grey;stroke-width:0;opacity:1"/>
+  <text fill="#ffffff" font-size="30" font-family="Verdana" x="300" y="70">Cadastro</text>
+</svg>
+<div>
+	<form name="newUserForm" ng-submit="signUp()">
+		<div class="container">
+  			<div class="row">
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 10px;">
+			  			<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+			  			<input class="form-control" type="text" placeholder="Nome Completo" ng-model="denunciante.name" tabindex="1" required />
+					</div>
+    			</div>
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 10px;">
+			  			<span class="input-group-addon"><i class="fa fa-globe fa-fw"></i></span>
+			  			<input class="form-control" type="text" placeholder="CEP" ng-model="address.cep" ng-blur="checkCEP()" tabindex="6" required />
+					</div>
+    			</div>
+  			</div>
+  			<div class="row">
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 10px;">
+			  			<span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span>
+			  			<input class="form-control" type="text" placeholder="Email" ng-model="denunciante.email"  tabindex="2" required />
+					</div>
+    			</div>
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 10px;">
+			  			<span class="input-group-addon"><i class="fa fa-home fa-fw"></i></span>
+			  			<input class="form-control" type="text" placeholder="Endereço" ng-model="address.street" tabindex="7" required />
+					</div>
+    			</div>
+  			</div>
+  			<div class="row">
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 10px;">
+			  			<span class="input-group-addon"><i class="fa fa-address-card fa-fw"></i></span>
+			  			<input class="form-control" type="text" placeholder="CPF" ng-model="denunciante.cpf"  tabindex="3" required />
+					</div>
+    			</div>
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 10px;">
+			  			<span class="input-group-addon"><i class="fa fa-map-marker fa-fw"></i></span>
+			  			<input class="form-control" type="text" placeholder="Número" ng-model="address.number"  tabindex="8" required />
+					</div>
+    			</div>
+  			</div>
+  			<div class="row">
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 10px;">
+			  			<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+			  			<input class="form-control" type="password" placeholder="Password" ng-model="denunciante.password" tabindex="4"  required />
+					</div>
+    			</div>
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 10px;">
+			  			<span class="input-group-addon"><i class="fa fa-plus-square-o fa-fw"></i></span>
+			  			<input class="form-control" type="text" placeholder="Complemento" ng-model="address.complement"  tabindex="9" >
+					</div>
+    			</div>
+  			</div>
+  			<div class="row">
+  				<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 10px;">
+			  			<span class="input-group-addon"><i class="fa fa-camera-retro fa-fw"></i></span>
+			  			<input class="form-control" id="uploadBtn" type="file" placeholder="Foto"  tabindex="5">
+					</div>
+					<div class="thumbnail" ng-if="photoIsSet">
+						<img class="img-responsive" alt="" ng-src="{{denunciante.photo}}"
+						style="height: 180px; width: 180px; display: block;" />
+    				</div>
+  				</div>
+ 			</div>
+ 			<div class="row" style="margin-bottom: 10px;">
+				<div class="col-md-6" align="right">
+					<button type="submit" ng-disabled="newUserForm.$invalid" class="btn btn-lg btn-success" >Cadastrar</button>
+				</div>
+				<div class="col-md-6">
+					<button type="reset" class="btn btn-lg btn-cancel" >Cancelar</button>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>

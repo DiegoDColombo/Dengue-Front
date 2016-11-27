@@ -1,0 +1,34 @@
+<svg width="800" height="150">
+  <rect x="10" y="20" rx="10" ry="10" width="700" height="75"
+  style="fill:#ffab00;stroke:grey;stroke-width:0;opacity:1"/>
+  <text fill="#ffffff" font-size="30" font-family="Verdana" x="325" y="70">Login</text>
+</svg>
+<div>
+	<form name="newUserForm" ng-submit="login()">
+		<div class="container">
+  		  <div class="row">
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 50px;">
+			  			<span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span>
+			  			<input class="form-control" type="text" placeholder="Email" ng-model="user.email" required />
+					</div>
+    			</div>
+    			<div class="col-md-6">
+    				<div class="input-group" style="margin-bottom: 50px;">
+			  			<span class="input-group-addon"><i class="fa fa-key fa-fw"></i></span>
+			  			<input class="form-control" type="password" min="6" placeholder="Senha" ng-model="user.password" required />
+					  </div>
+    			</div>
+  			</div>
+        <div class="row" style="margin-bottom: 10px;">
+          <div class="col-md-6" align="right">
+            <button type="submit" ng-disabled="newUserForm.$invalid" class="btn btn-lg btn-success" >Entrar</button>
+          </div>
+          <div class="col-md-6">
+            <button type="reset" class="btn btn-lg btn-cancel" >Cancelar</button>
+          </div>
+        </div>
+    </div>
+  </form>
+</div>
+        
