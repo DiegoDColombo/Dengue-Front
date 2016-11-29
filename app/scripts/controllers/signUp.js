@@ -8,7 +8,7 @@
  * Controller of the dengueFrontApp
  */
 angular.module('dengueFrontApp')
-  .controller('SignUpCtrl', function ($scope,$rootScope,$http,API_URL,$state) {
+  .controller('SignUpCtrl', function ($scope,$rootScope,$http,API_URL,$state,viaCEP) {
  
     $scope.denunciante = {
       photo: null
@@ -79,19 +79,10 @@ angular.module('dengueFrontApp')
     };
 
     $scope.checkCEP = function(){
-      $http({
-                method: 'GET',
-                url: 'https://viacep.com.br/ws/'+$scope.address.cep+'/json/',
-                header: {
-                  
-                }
-            }).then(function successCallback(response) {
-                console.log(response);
-                //$scope.address.street = response.logradouro;
-                return response;
-                }, function errorCallback(response) {
-                  return -1;
-            });
+      viaCEP.get($scope.location.cep).then(function(response){
+            console.log(response);
+            //$scope.location.full = response;
+        });
 
     };
 });

@@ -1,0 +1,37 @@
+<svg width="800" height="150">
+  <rect x="10" y="20" rx="10" ry="10" width="700" height="75"
+  style="fill:#ffab00;stroke:grey;stroke-width:0;opacity:1"/>
+  <text fill="#ffffff" font-size="30" font-family="Verdana" x="225" y="70">Minhas Denúncias</text>
+</svg>
+<div class="container-fluid">	
+	<div class="row">
+		<div class="col-md-2"><h5>Denúncia</h5></div>
+		<div class="col-md-2"><h5>Status</h5></div>
+		<div class="col-md-2"><h5>Vigilância Governamental</h5></div>
+		<div class="col-md-2"><h5>Casos Diagnosticados</h5></div>
+		<div class="col-md-4"><h5>Endereço</h5></div>
+	</div>
+	<div class="row" ng-repeat="denuncia in denuncias" style="overflow-y: scroll; margin-bottom: 10px;">
+		<div class="col-md-2">
+			{{$index}}
+		</div>
+		<div class="col-md-2">
+			<p ng-if="denuncia.status=='open'">Aberta</p>
+			<p ng-if="denuncia.status=='resolved'">Encerrada</p>
+		</div>
+		<div class="col-md-2">
+			<p ng-if="denuncia.epidem_vigilance">Sim</p>
+			<p ng-if="!denuncia.epidem_vigilance">Não</p>
+		</div>
+		<div class="col-md-2">
+			<p ng-if="denuncia.diagnosticated_cases">Sim</p>
+			<p ng-if="!denuncia.diagnosticated_cases">Não</p>
+		</div>
+		<div class="col-md-2">
+			<p>{{denuncia.location.street}}, n˚{{denuncia.location.number}}</p>
+		</div>
+		<div class="col-md-2">
+			<button class="btn btn-default" ng-click="alterarStatus()">Atualizar</button>
+		</div>
+	</div>
+</div>

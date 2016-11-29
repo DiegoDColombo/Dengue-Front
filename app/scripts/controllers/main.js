@@ -9,7 +9,11 @@
  */
 angular.module('dengueFrontApp')
   .controller('MainCtrl', function ($scope,$state,$auth) {
-    
+   	
+  	$scope.isAuthenticated = function() {
+  		return $auth.isAuthenticated();
+	};
+
     $scope.logout = function() {
       $auth.logout();
       $state.go('login');

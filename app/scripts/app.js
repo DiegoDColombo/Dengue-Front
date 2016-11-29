@@ -19,7 +19,9 @@ angular
     'ui.router',
     'config',
     'satellizer',
-    'ui.bootstrap'
+    'ui.bootstrap',
+    'angular.viacep',
+    'nvd3',
   ])
   .config(function ($stateProvider,$urlRouterProvider,$authProvider,API_URL) {
     
@@ -45,6 +47,15 @@ angular
                   controller: 'MainCtrl'
                 }
         }
+      }).state('informacao',{
+        url: '/informacao',
+        views:
+        {
+            '': {
+                  templateUrl: 'views/informacao.html',
+                  controller: ''
+                }
+        }
       }).state('signUp',{
         url: '/signUp',
         views:
@@ -63,13 +74,37 @@ angular
                   controller: 'LoginCtrl'
             }
         }
+      }).state('estatisticas',{
+        url: '/estatisticas',
+        views:
+        {
+            '':{
+                  templateUrl:'views/estatisticas.html',
+                  controller: 'EstatCtrl'
+            }
+        },resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+            
+            if (!$auth.isAuthenticated())
+            {
+              $location.path('/login');
+            }
+            else
+            {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
       }).state('createDenuncia',{
         url: '/criarDenuncia',
         views:
         {
             '': {
-                  templateUrl: 'views/criarDenuncia.html',
-                  controller: 'DenunciaCtrl'
+                  templateUrl: 'views/createDenuncia.html',
+                  controller: 'CreateDenunciaCtrl'
                 }
         },resolve: {
           authenticated: function($q, $location, $auth) {
@@ -81,6 +116,30 @@ angular
             }
             else
             {
+              deferred.resolve();
+            }
+
+            return deferred.promise;
+          }
+        }
+      }).state('showDenuncias',{
+        url: '/minhasDenuncias',
+        views:
+        {
+            '': {
+                  templateUrl: 'views/showDenuncias.html',
+                  controller: 'ShowDenunciasCtrl'
+                }
+        },resolve: {
+          authenticated: function($q, $location, $auth) {
+            var deferred = $q.defer();
+            
+            if (!$auth.isAuthenticated())
+            {
+              $location.path('/login');
+            }
+            else
+            { 
               deferred.resolve();
             }
 
